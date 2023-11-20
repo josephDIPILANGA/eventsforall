@@ -1,0 +1,154 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id                 String  @id @default(cuid()) @map("_id")
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?  
+  access_token       String?  
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?  
+  session_state      String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid()) @map("_id")
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id @default(cuid()) @map("_id")
+  name          String?
+  email         String   @unique
+  emailVerified DateTime?
+  image         String?
+  longitude Int @default(0)
+  latitude  Int @default(0)
+  accounts      Account[]
+  sessions      Session[]
+  posts         Post[]
+  activities    Activitie[] // Ce champ représente la relation de User à Activitie
+  comments      Comment[]   // Ce champ représente la relation de User à Comment
+  postComments  PostComment[]   // Ce champ représente la relation de User à Comment
+
+
+}
+
+model VerificationToken {
+  identifier String @id @map("_id")
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Category {
+  id            String    @id @default(cuid()) @map("_id")
+  slug          String   @unique
+  image         String?
+  title         String?
+  Activities    Activitie[]
+  Posts         Post[]
+
+}
+
+model Post {
+  id        String    @id @default(cuid()) @map("_id")
+  createdAt DateTime  @default(now())
+  slug      String    @unique
+  title     String
+  desc      String
+  adresse   String?
+  img       String?
+  date_debut    DateTime?
+  views     Int       @default(0)
+  catSlug   String?
+  source    String?
+  cat       Category?  @relation(fields: [catSlug], references: [slug])
+  userEmail String
+  user      User      @relation(fields: [userEmail], references: [email])
+  comments  PostComment[]
+  placeId   String?
+  place     Place?   @relation(fields: [placeId], references: [id])
+}
+
+model Activitie {
+  id            String    @id @default(cuid()) @map("_id")
+  createdAt     DateTime  @default(now())
+  slug          String    @unique
+  image         String?
+  title         String
+  town          String
+  street        String
+  number        String
+  peoples_authaurize Int @default(0)
+  date_begin    DateTime
+  date_end      String
+  description   String
+  views         Int       @default(0)
+  longitude     Int       @default(0)
+  latitude      Int       @default(0)
+  catSlug       String?
+  cat           Category?  @relation(fields: [catSlug], references: [slug])
+  userEmail     String
+  user          User      @relation(fields: [userEmail], references: [email])
+  comments      Comment[]
+  placeId       String?
+  place         Place?   @relation(fields: [placeId], references: [id])
+}
+
+model Place {
+  id         String   @id @default(cuid()) @map("_id")
+  name       String
+  city       String
+  street     String
+  desc       String
+  latitude   Int
+  longitude  Int
+  img        String
+  source     String
+  posts      Post[]
+  activities Activitie[]
+}
+
+model Comment {
+  id            String    @id @default(cuid()) @map("_id")
+  createdAt     DateTime  @default(now())
+  description   String
+  userEmail     String
+  user          User      @relation(fields: [userEmail], references: [email])
+  activitieSlug String
+  activitie     Activitie @relation(fields: [activitieSlug], references: [slug])
+}
+
+model PostComment {
+  id            String    @id @default(cuid()) @map("_id")
+  createdAt     DateTime  @default(now())
+  description   String
+  userEmail     String
+  user          User      @relation(fields: [userEmail], references: [email])
+  postSlug      String
+  post          Post      @relation(fields: [postSlug], references: [slug])
+}
+

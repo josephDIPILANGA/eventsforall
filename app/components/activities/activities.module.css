@@ -1,0 +1,16 @@
+.back{
+    background-color: #35A55D;
+    min-width: 250px;
+}
+.mx-5{
+    padding-bottom: 30px;
+}
+
+.geolocal{
+    max-width: 0;
+    margin: 0 auto;    
+}
+
+.geolocal i {
+ color: #4b8798;
+}

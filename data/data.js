@@ -1,0 +1,22 @@
+const data = [
+    { "id": 1, "name": "King Baudouin Stadium", "city": "Brussels", "street": "Marathonlaan 135/2", "type": "stade de foot", "ticket": "https://kingbaudouinstadium.be/"},
+    { "id": 2, "name": "Drie Lindenstadion", "city": "Boitsfort", "street": "Nimfenlaan 1A Avenue des Nymphes", "type": "stade de foot", "source": null},
+    { "id": 3, "name": "Jan Breydel Stadium", "city": "Bruges", "street": "Olympialaan 74", "type": "stade de foot", "source": null },
+    { "id": 4, "name": "Stade Maurice Dufrasne", "city": "Liège", "street": "Rue de la Centrale 2", "type": "stade de foot", "ticket": "https://standard.be/fr/calendrier" },
+    { "id": 5, "name": "Cegeka Arena", "city": "Genk", "street": "Stadionplein 4", "type": "stade de foot", "ticket": "https://www.krcgenk.be/nl/ticketing/tickets"},
+    { "id": 6, "name": "Lotto Park", "city": "Anderlecht", "street": "Théo Verbeecklaan 2", "type": "stade de foot", "ticket": "https://www.rsca.be/fr/stadiumplan" },
+    { "id": 7, "name": "Ghelamco Arena", "city": "Ghent", "street": "Ottergemsesteenweg Zuid 808", "type": "stade de foot", "ticket": "https://www.kaagent.be/nl/team/first-team/kalender/kaa-gent/2023/2024" },
+    { "id": 8, "name": "Achter de Kazerne", "city": "Mechelen", "street": null, "type": "stade de foot", "ticket": "https://www.kvmechelen.be/ticketing/informatie" },
+    { "id": 9, "name": "Bosuilstadion", "city": "Antwerp", "street": null, "type": "stade de foot", "ticket" : "https://royalantwerpfc.be/ticketing" },
+    { "id": 10, "name": "Stade du Pays de Charleroi", "city": "Charleroi", "street": null, "type": "stade de foot", "ticket" : "https://www.sporting-charleroi.be/abonnements/" },
+    { "id": 11, "name": "Stayen", "city": "Sint-Truiden", "street": null, "type": "stade de foot", "ticket" : null },
+    { "id": 12, "name": "Herman Vanderpoortenstadion", "city": "Lier", "street": null, "type": "stade de foot" , "ticket": "https://www.lierse.com/welkom-op-het-lisp" },
+    { "id": 13, "name": "Olympisch Stadion", "city": "Antwerp", "street": null, "type": "stade de foot", "ticket": null },
+    { "id": 14, "name": "Stade du Tivoli", "city": "La Louviere", "street": null, "type": "stade de foot", "tickey": "https://ticket.raal.be/"},
+    { "id": 15, "name": "Elindus Arena", "city": "Waregem", "street": null, "type": "stade de foot", "ticket": null },
+    { "id": 16, "name": "Edmond Machtens Stadium", "city": "Molenbeek", "street": null, "type": "stade de foot", "ticket": "https://ticketing.rwdm.be/" },
+    { "id": 17, "name": "Daknamstadion", "city": "Lokeren", "street": null, "type": "stade de foot" },
+    { "id": 18, "name": "Stade de Buraufosse", "city": "Liège", "street": null, "type": "stade de foot" },
+    { "id": 19, "name": "Stade Le Canonnier", "city": "Mouscron", "street": null, "type": "stade de foot" },
+    { "id": 20, "name": "Den Dreef", "city": "Heverlee", "street": null, "type": "stade de foot" }
+]
